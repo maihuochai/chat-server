@@ -47,5 +47,6 @@ export class ChatGateway implements OnGatewayConnection,OnGatewayDisconnect{
   onLogin(@MessageBody() data: { username:string },@ConnectedSocket() client:Socket){
     this.users[client.id]=data.username
     this.server.emit('Users',this.users)
+    this.server.emit('Record',this.recording)
   }
 }
